@@ -1,0 +1,25 @@
+services:
+    database:
+        image: mariadb:lts
+        restart: always
+        environment: 
+            - MARIADB_ROOT_PASSWORD=password
+            - MARIADB_DATABASE=modulo_usuarios
+        ports:
+            - 3306:3306
+        volumes:
+            - ./DB:/docker-entrypoint-initdb.d/
+            - db-volume:/var/lib/mysql
+    app:
+        build: ./app
+        ports:
+            - 9000:80
+        depends_on:
+            - database
+        develop:
+            watch:
+                - action: sync
+                  path: ./app
+                  target: /var/www/html
+volumes:
+    db-volume:
