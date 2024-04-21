@@ -14,6 +14,7 @@ class EmployeeController extends CI_Controller {
         $data['user_id'] = $this->session->user_id;
         $data['title'] = 'Mis pagos';
         $this->load->view('templates/header', $data);
+        $this->load->view('templates/employee/navbar', $data);
         $this->load->view('employee/dashboard', $data);
     }
 }

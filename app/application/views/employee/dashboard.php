@@ -1,8 +1,5 @@
-<link href="<?= base_url('assets/css/dx.light.css') ?>" rel="stylesheet">
-</head>
-<body>
 <div class="container p-5">
-    <h2>Bienvenido, <?= $name ?></h2>
+    <h2>Historial de pagos</h2>
     <hr />
     <div id="dataGrid"></div>
 </div>
@@ -13,7 +10,7 @@
         $.get('<?= base_url('payment/user/'.$user_id) ?>', (data) => {
             $('#dataGrid').dxDataGrid({
                 dataSource: data,
-                keyExpr: 'id',
+                keyExpr: 'correlativo',
                 filterRow: { visible: true },
                 searchPanel: { visible: true },
                 columnAutoWidth: true

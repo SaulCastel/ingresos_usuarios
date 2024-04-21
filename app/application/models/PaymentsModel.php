@@ -16,7 +16,10 @@ class PaymentsModel extends CI_Model {
     }
 
     public function get_payments_by_id($id) {
-        $query = $this->db->get_where('payment', array('user'=> $id));
+        $this->db->select('p.id correlativo, p.quantity Cantidad, p.amount Monto, p.payment_date Fecha, t.description Tipo, p.comments Comentarios');
+        $this->db->from('payment AS p');
+        $this->db->join('payment_type AS t', 't.id = p.ptype');
+        $query = $this->db->get();
         return $query->result_array();
     }
 
