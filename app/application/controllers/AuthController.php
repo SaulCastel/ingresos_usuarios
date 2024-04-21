@@ -31,6 +31,7 @@ class AuthController extends CI_Controller
                         'email' => $user->email,
                         'user_type' => $user->role,
                         'user_name' => $user->name . ' ' . $user->last_name,
+                        'user_id' => $user->id,
                         'logged_in' => TRUE
                     );
                     $this->session->set_userdata($user_data);

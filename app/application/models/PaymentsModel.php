@@ -15,6 +15,11 @@ class PaymentsModel extends CI_Model {
         return $query->result_array();
     }
 
+    public function get_payments_by_id($id) {
+        $query = $this->db->get_where('payment', array('user'=> $id));
+        return $query->result_array();
+    }
+
     public function record_payment($new_payment)
     {
         $this->db->insert('payment', $new_payment);

@@ -19,6 +19,15 @@ class PaymentController extends CI_Controller
             ->set_output(json_encode($payments));
     }
 
+    public function user($id)
+    {
+        $payments = $this->PaymentsModel->get_payments_by_id($id);
+        return $this->output
+            ->set_content_type('application/json')
+            ->set_status_header(200)
+            ->set_output(json_encode($payments));
+    }
+
     public function create()
     {
         $data['title'] = 'Registrar pago';

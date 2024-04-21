@@ -59,6 +59,7 @@ $route['user/create'] = 'UserController/create';
 $route['user/store'] = 'UserController/store';
 $route['user/delete/(:num)']['delete'] = 'UserController/destroy/$1';
 $route['payment/all']['get'] = 'PaymentController/get_payments';
+$route['payment/user/(:num)']['get'] = 'PaymentController/user/$1';
 $route['payment/create'] = 'PaymentController/create';
 $route['payment/store'] = 'PaymentController/store';
 $route['payment/delete/(:num)']['delete'] = 'PaymentController/destroy/$1';
