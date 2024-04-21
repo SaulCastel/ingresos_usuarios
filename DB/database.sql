@@ -25,6 +25,7 @@ CREATE TABLE payment_type (
 
 CREATE TABLE payment (
     id INTEGER PRIMARY KEY AUTO_INCREMENT,
+    user INTEGER REFERENCES profile(id),
     quantity INTEGER NOT NULL,
     amount DECIMAL(10,2) NOT NULL,
     payment_date DATE NOT NULL,

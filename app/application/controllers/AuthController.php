@@ -1,6 +1,8 @@
 <?php
-class AuthController extends CI_Controller {
-    public function __construct() {
+class AuthController extends CI_Controller
+{
+    public function __construct()
+    {
         parent::__construct();
         $this->load->model('UsersModel');
         $this->load->library('session');
@@ -8,11 +10,12 @@ class AuthController extends CI_Controller {
         $this->load->helper('form');
     }
 
-    public function login() {
+    public function login()
+    {
         $data = array();
         if ($this->session->logged_in) {
             if ($this->session->user_type == 0) {
-                redirect('admin/dashboard');
+                redirect('admin/users');
             }
             redirect('employee/dashboard');
         }
@@ -21,17 +24,21 @@ class AuthController extends CI_Controller {
             $password = $this->input->post('password');
             $user = $this->UsersModel->login($email, $password);
             if ($user) {
-                $user_data = array(
-                    'email' => $user->email,
-                    'user_type' => $user->role,
-                    'user_name' => $user->name.' '.$user->lastname,
-                    'logged_in' => TRUE
-                );
-                $this->session->set_userdata($user_data);
-                if ($user->role == 0) {
-                    redirect('admin/dashboard');
+                if ($user->state == 0) {
+                    $data['error'] = 'El usuario esta desactivado';
+                } else {
+                    $user_data = array(
+                        'email' => $user->email,
+                        'user_type' => $user->role,
+                        'user_name' => $user->name . ' ' . $user->last_name,
+                        'logged_in' => TRUE
+                    );
+                    $this->session->set_userdata($user_data);
+                    if ($user->role == 0) {
+                        redirect('admin/users');
+                    }
+                    redirect('employee/dashboard');
                 }
-                redirect('employee/dashboard');
             } else {
                 $data['error'] = 'Usuario o contraseña incorrectos';
             }
@@ -41,7 +48,8 @@ class AuthController extends CI_Controller {
         $this->load->view('login', $data);
     }
 
-    public function logout() {
+    public function logout()
+    {
         $this->session->sess_destroy();
         redirect('login');
     }

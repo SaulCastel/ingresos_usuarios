@@ -51,12 +51,17 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 */
 $route['login'] = 'AuthController/login';
 $route['logout'] = 'AuthController/logout';
-$route['admin/dashboard'] = 'AdminController/index';
+$route['admin/users'] = 'AdminController/users';
+$route['admin/payments'] = 'AdminController/payments';
 $route['employee/dashboard'] = 'EmployeeController/index';
 $route['user/all']['get'] = 'UserController/get_users';
 $route['user/create'] = 'UserController/create';
 $route['user/store'] = 'UserController/store';
 $route['user/delete/(:num)']['delete'] = 'UserController/destroy/$1';
+$route['payment/all']['get'] = 'PaymentController/get_payments';
+$route['payment/create'] = 'PaymentController/create';
+$route['payment/store'] = 'PaymentController/store';
+$route['payment/delete/(:num)']['delete'] = 'PaymentController/destroy/$1';
 $route['default_controller'] = 'AuthController/login';
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;

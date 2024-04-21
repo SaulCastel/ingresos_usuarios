@@ -5,3 +5,5 @@ INSERT INTO profile (email, name, last_name, password, state, role) VALUES ('adm
 INSERT INTO profile (email, name, last_name, password, state) VALUES ('user1@e4cc.com', 'Nombre1', 'Apellido1', 'password', 1);
 INSERT INTO profile (email, name, last_name, password, state) VALUES ('user2@e4cc.com', 'Nombre2', 'Apellido2', 'password', 1);
 INSERT INTO profile (email, name, last_name, password, state) VALUES ('user3@e4cc.com', 'Nombre3', 'Apellido3', 'password', 0);
+INSERT INTO payment (user, quantity, amount, payment_date, ptype, comments) VALUES (2, 3, 45, '2024/04/20', 0, 'Ningun comentario');
+INSERT INTO payment (user, quantity, amount, payment_date, ptype, comments) VALUES (2, 3, 45, '2024/04/20', 1, 'Ningun comentario');
