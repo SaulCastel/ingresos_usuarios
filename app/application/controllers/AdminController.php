@@ -11,6 +11,8 @@ class AdminController extends CI_Controller {
             redirect('login');
         }
         $data['name'] = $this->session->user_name;
+        $data['title'] = 'Admin';
+        $this->load->view('templates/header', $data);
         $this->load->view('admin/dashboard', $data);
     }
 }

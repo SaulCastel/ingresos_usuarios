@@ -5,6 +5,7 @@ class AuthController extends CI_Controller {
         $this->load->model('UsersModel');
         $this->load->library('session');
         $this->load->helper('url');
+        $this->load->helper('form');
     }
 
     public function login() {
@@ -35,6 +36,8 @@ class AuthController extends CI_Controller {
                 $data['error'] = 'Usuario o contraseña incorrectos';
             }
         }
+        $data['title'] = 'Login';
+        $this->load->view('templates/header', $data);
         $this->load->view('login', $data);
     }
 
