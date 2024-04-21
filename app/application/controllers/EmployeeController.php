@@ -1,5 +1,5 @@
 <?php
-class AdminController extends CI_Controller {
+class EmployeeController extends CI_Controller {
     public function __construct() {
         parent::__construct();
         $this->load->library('session');
@@ -10,7 +10,6 @@ class AdminController extends CI_Controller {
         if (!$this->session->logged_in){
             redirect('login');
         }
-        $data['name'] = $this->session->user_name;
-        $this->load->view('admin/dashboard', $data);
+        echo 'Hola desde user';
     }
 }

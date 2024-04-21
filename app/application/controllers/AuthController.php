@@ -13,7 +13,7 @@ class AuthController extends CI_Controller {
             if ($this->session->user_type == 0) {
                 redirect('admin/dashboard');
             }
-            redirect('user/dashboard');
+            redirect('employee/dashboard');
         }
         if (isset($_POST['submit'])) {
             $email = $this->input->post('email');
@@ -23,13 +23,14 @@ class AuthController extends CI_Controller {
                 $user_data = array(
                     'email' => $user->email,
                     'user_type' => $user->role,
+                    'user_name' => $user->name.' '.$user->lastname,
                     'logged_in' => TRUE
                 );
                 $this->session->set_userdata($user_data);
                 if ($user->role == 0) {
                     redirect('admin/dashboard');
                 }
-                redirect('user/dashboard');
+                redirect('employee/dashboard');
             } else {
                 $data['error'] = 'Usuario o contraseña incorrectos';
             }
